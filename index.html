@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hzcoding.de | Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f1012;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --accent-purple: #bf5af2;
+            --accent-yellow: #ffd60a;
+            --accent-orange: #ff9f0a;
+            --discord-blurple: #5865f2;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(191, 90, 242, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 214, 10, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 0; /* Platz zum Scrollen */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            display: grid;
+            /* FIX: Hier wurde "deepslate" für die gesamte untere Zeile hinzugefügt */
+            grid-template-areas: 
+                "header header"
+                "server socials"
+                "deepslate info";
+            grid-gap: 25px;
+        }
+
+        .header-card {
+            grid-area: header;
+            background: linear-gradient(90deg, #1a1b1e, #25262b);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://w.wallhaven.cc/full/85/wallhaven-85m88y.jpg') center/cover;
+            opacity: 0.3;
+        }
+
+        .logo {
+            position: relative;
+            z-index: 1;
+            max-height: 150px;
+            max-width: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .server-section { grid-area: server; }
+        .socials-section { grid-area: socials; }
+        .deepslate-section { grid-area: deepslate; }
+        .info-section { grid-area: info; } /* Korrekt zugewiesen */
+
+        .label {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .label-purple { border: 2px solid var(--accent-purple); color: var(--accent-purple); box-shadow: 0 0 15px rgba(191, 90, 242, 0.2); }
+        .label-yellow { border: 2px solid var(--accent-yellow); color: var(--accent-yellow); box-shadow: 0 0 15px rgba(255, 214, 10, 0.2); }
+
+        .ip-display { font-size: 1.4rem; font-family: 'Fira Code', monospace; margin-bottom: 5px; }
+        .ver-display { font-size: 1rem; color: var(--text-dim); font-family: 'Fira Code', monospace; margin-bottom: 15px; }
+        .by-display { 
+    font-size: 0.8rem; 
+    color: var(--text-dim); 
+    font-family: 'Fira Code', monospace; 
+
+    margin-top: auto;    /* Schiebt das Element nach ganz unten */
+    text-align: center;  /* Zentriert den Text selbst */
+    padding-top: 20px;   /* Optional: Ein kleiner Abstand zum Text darüber */
+}
+
+        .status-badge { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-orange); font-weight: 600; }
+        .status-dot { width: 10px; height: 10px; background-color: var(--accent-orange); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+        .social-list { display: flex; flex-direction: column; gap: 15px; }
+        .social-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-dim);
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: 0.2s;
+        }
+        .social-item:hover { background: rgba(255, 255, 255, 0.08); color: white; }
+
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas: "header" "server" "socials" "deepslate";
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header-card">
+            <img src="affafaf.png" alt="HzCoding Logo" class="logo">
+        </header>
+
+        <section class="card server-section">
+            <div class="label label-purple">Minecraft Server</div>
+            <div class="ip-display">IP: hzcoding.de</div>
+            <div class="ver-display">Version: 1.21.11 / Niedriger</div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Server befindet sich in Wartungen
+            </div>
+        </section>
+
+        <section class="card socials-section">
+            <div class="label label-yellow">Socials</div>
+            <div class="social-list">
+                <a href="DEIN_DISCORD_LINK" class="social-item discord">
+                    <span><i class="fab fa-discord"></i> Discord</span>
+                    <span style="opacity: 0.3;">hoelzchen.v3</span>
+                </a>
+                <a href="https://www.twitch.tv/hoelzchenyt" class="social-item twitch">
+                    <span><i class="fab fa-twitch"></i> Twitch</span>
+                    <span style="opacity: 0.3;">HoelzchenYT</span>
+                </a>
+                <a href="https://www.youtube.com/@HoelzchenYT" class="social-item youtube">
+                    <span><i class="fab fa-youtube"></i> YouTube</span>
+                    <span style="opacity: 0.3;">HoelzchenYT</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="card deepslate-section">
+            <div class="label label-yellow" style="border-color: #ff0000; color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);">Werbung</div>
+            <div class="ip-display">DeepslateMC</div>
+            <div class="ver-display">Version: 1.21.11 & Niedriger</div>
+            <div class="ver-display">Viele nützliche Commands!</div>
+            <div class="social-list">
+            <a href="https://pascalpex.de/deepslate/" class="social-item github">
+                    <span><i class="fa-solid fa-cube"></i> DeepslateMC</span>
+                    <span style="opacity: 0.3;">Pascalpex.de</span>
+                    </a>
+                    <a href="https://discord.gg/dqPWzeNZEE" class="social-item discord">
+                    <span><i class="fab fa-discord"></i> Discord Server</span>
+                    <span style="opacity: 0.3;">DeepslateMC</span>
+                    </a>
+                    </div>
+                    <div></div>
+                     <div class="by-display">Von: Pascalpex</div>
+        </section>
+
+        <section class="card info-section">
+            <div class="label label-yellow" style="border-color: #0099ff; color: #0099ff; box-shadow: 0 0 15px #0099ff50;">Über Mich</div>
+            <div class="ip-display">Hi, ich bin Hoelzchen!</div>
+            <div class="ver-display">Ich liebe es Minecraft Projekte zu erstellen, und Events zu planen.
+                                     Ich bin Inhaber von einer Award Show, und plane momentan ein neues Projekt.
+            </div>
+        </section>
+    </div> </body>
+</html>
