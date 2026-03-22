@@ -29,7 +29,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 40px 0; /* Platz zum Scrollen */
+            padding: 40px 0;
         }
 
         .container {
@@ -37,7 +37,7 @@
             max-width: 900px;
             padding: 20px;
             display: grid;
-            /* FIX: Hier wurde "deepslate" für die gesamte untere Zeile hinzugefügt */
+            
             grid-template-areas: 
                 "header header"
                 "server socials"
@@ -93,7 +93,7 @@
         .server-section { grid-area: server; }
         .socials-section { grid-area: socials; }
         .deepslate-section { grid-area: deepslate; }
-        .info-section { grid-area: info; } /* Korrekt zugewiesen */
+        .info-section { grid-area: info; } 
 
         .label {
             display: inline-block;
@@ -115,9 +115,9 @@
     color: var(--text-dim); 
     font-family: 'Fira Code', monospace; 
 
-    margin-top: auto;    /* Schiebt das Element nach ganz unten */
-    text-align: center;  /* Zentriert den Text selbst */
-    padding-top: 20px;   /* Optional: Ein kleiner Abstand zum Text darüber */
+    margin-top: auto;    
+    text-align: center;  
+    padding-top: 20px;   
 }
 
         .status-badge { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-orange); font-weight: 600; }
